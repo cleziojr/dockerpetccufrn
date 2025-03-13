@@ -3,8 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-# Exemplo de URL de uma API de curiosidade do dia
-API_URL = "https://api.adviceslip.com/advice"  # Substitua por uma API real de curiosidade
+# API gratuita que encontrei
+API_URL = "https://api.adviceslip.com/advice"
 
 @app.route('/')
 def route():
@@ -13,7 +13,8 @@ def route():
         response = requests.get(API_URL)
         data = response.json()
         
-        # Aqui estamos assumindo que a API retorna um campo 'content' com a curiosidade
+        # Data é um dicionário que contém um dicionário. Passando as chaves entre colchetes e aspas simples, torna-se possível obter
+        # o valor correspondente à curiosidade
         curiosity = data['slip']['advice']
         
         return curiosity
